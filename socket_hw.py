@@ -12,11 +12,11 @@ def main():
     port = 27993
     host = "proj1.3700.network"
     username = "kosowski.e"
-    tls_bool = False
+    tls_bool = True
 
     sys.argv.pop(0)
 
-    if sys.argv[0] == "-p":
+    '''if sys.argv[0] == "-p":
         port = int(sys.argv[1])
         if sys.argv[2] == "-s":
             tls_bool = True
@@ -32,15 +32,15 @@ def main():
         username = sys.argv[2]
     else:
         host = sys.argv[0]
-        username = sys.argv[1]
+        username = sys.argv[1]'''
 
-    #port = 27993
-    #host = "proj1.3700.network"
-    #username = "kosowski.e"
+    port = 27994
+    host = "proj1.3700.network"
+    username = "kosowski.e"
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     if tls_bool:
-        context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        context = ssl.SSLContext(ssl.PROTOCOL_TLS)
         ss = context.wrap_socket(s, server_hostname=host)
         wordle(ss, host, port, username)
     else:
